@@ -160,6 +160,33 @@ FROM customers
 WHERE phone NOT LIKE "%9";
 
 -- REGENXP Operator 
-
-
+-- Both the RegeXP and LIKE Query Work the Same
  
+SELECT *
+FROM customers
+WHERE last_name LIKE '%field%';
+
+--  ^field -> last name must start with field 
+-- String must contain field in the end of the string like (Brushfield)
+
+SELECT *
+FROM customers
+WHERE last_name REGEXP 'field$';
+ 
+-- Find the Data that contains field|mac|rose like (MacCaffrey and Roseburgh) 
+-- ^field start of the string
+-- field$ end of the string 
+
+SELECT *
+FROM customers
+WHERE last_name REGEXP '^field|mac|rose';
+
+-- '[gim]e' -> this will search like 
+-- ge, 
+-- ie, 
+-- me in the string
+-- e[fmq] -> ef , em, eq
+
+SELECT *
+FROM customers
+WHERE last_name REGEXP '[gim]e';
