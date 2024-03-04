@@ -123,3 +123,43 @@ WHERE birth_date between '1990-01-01' AND '2000-01-01';
 
 
 -- like Operator in MySQL 
+-- b% Start with b, %b end with b, %b% b in the middle of the string mean Name 
+-- String Pattern
+ 
+SELECT * 
+FROM customers
+WHERE last_name LIKE 'b%';
+
+--  _o% -> first any char second will be o
+
+SELECT * 
+FROM customers
+WHERE last_name LIKE '_o%';
+
+
+-- Exercise Get the customers whose 
+-- addresses contain TRAIL or AVENUE  
+-- Phone numbers end with 9
+
+SELECT *
+FROM customers
+WHERE address LIKE '%trail%' OR 
+	  address LIKE '%avenue%' AND 
+      phone like "%9";
+      
+
+SELECT *
+FROM customers
+WHERE phone like "%9";
+
+-- NOT END with 9
+
+
+SELECT *
+FROM customers
+WHERE phone NOT LIKE "%9";
+
+-- REGENXP Operator 
+
+
+ 
