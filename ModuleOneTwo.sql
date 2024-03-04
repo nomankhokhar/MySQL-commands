@@ -176,7 +176,11 @@ WHERE last_name REGEXP 'field$';
 -- Find the Data that contains field|mac|rose like (MacCaffrey and Roseburgh) 
 -- ^field start of the string
 -- field$ end of the string 
+-- | logical
+-- [abcd] match for the single character in the Bracket
+-- [a-f] match range using the given range
 
+ 
 SELECT *
 FROM customers
 WHERE last_name REGEXP '^field|mac|rose';
@@ -190,3 +194,104 @@ WHERE last_name REGEXP '^field|mac|rose';
 SELECT *
 FROM customers
 WHERE last_name REGEXP '[gim]e';
+
+
+--  We can also define range in the Regex
+-- like this ae, be and so on 
+
+SELECT *
+FROM customers
+WHERE last_name REGEXP '[a-h]e';
+
+
+-- Exercise Get customers whose
+-- first names are ELSE or AMBUR
+
+SELECT *
+FROM customers
+WHERE first_name REGEXP 'elka|ambur';
+
+-- last names end with EY or ON
+
+SELECT *
+FROM customers
+WHERE last_name REGEXP 'ey$|on$';
+
+
+-- last names start with MY or contains SE
+
+SELECT *
+FROM customers
+WHERE last_name REGEXP '^my|se';
+
+-- last names contains B followed by R or U
+-- b[ru] and br|bu
+
+SELECT *
+FROM customers
+WHERE last_name REGEXP 'b[ru]';
+
+
+-- NUll Operator to check the NULL values
+ 
+SELECT *
+FROM customers
+WHERE phone IS NULL;
+
+--  Exercise Get the Orders that are not shipped
+
+SELECT *
+FROM orders
+WHERE shipper_id IS NULL;
+
+
+-- Order BY  Clause ASC byDeafult
+-- first sort the state then sort first_name base on that state
+ 
+SELECT * 
+FROM customers
+ORDER BY state ,first_name;
+
+-- this is valid Query But in Other Databases this will not work
+ 
+SELECT first_name , 10 as points
+FROM customers
+ORDER BY points;
+
+
+-- Exercise Get all orders_items
+-- Repetion in the Query
+
+SELECT * , quantity * unit_price as total_price
+FROM order_items
+WHERE order_id = 2
+ORDER BY quantity * unit_price DESC;
+
+-- No repetion in the Query 
+
+SELECT * , quantity * unit_price as total_price
+FROM order_items
+WHERE order_id = 2
+ORDER BY total_price DESC;
+
+
+-- LIMIT Clause
+
+SELECT *
+FROM customers 
+LIMIT 4; 
+
+
+-- Exercise Get the top three loyal customers
+
+SELECT *
+FROM customers
+ORDER BY points DESC
+LIMIT 3;
+
+-- Orders Matter During Execution
+-- SELECT 
+-- FROM
+-- WHERE
+-- ORDER BY
+-- LIMIT 
