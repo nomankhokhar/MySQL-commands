@@ -66,4 +66,6 @@ JOIN employees m
 
 -- Joining Multiple Tables
 
- 
+SELECT *
+FROM sql_store.orders;
+
