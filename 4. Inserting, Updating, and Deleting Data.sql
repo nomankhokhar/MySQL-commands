@@ -61,3 +61,8 @@ INSERT INTO products
 VALUES (11, "Strawbery", 100, 10),
 	   (12, "Ice Strawbery", 100, 10),
        (13, "Chocolate", 100, 10);
+       
+       
+-- Inserting Hirarchical Rows in the table mean 
+-- inserting data into Multiple Tables
+ 
