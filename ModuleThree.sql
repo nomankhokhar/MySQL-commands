@@ -187,8 +187,29 @@ JOIN order_statuses os
     
 
 -- Self Outer Joins
-
+-- Find the Employee Does not have Manager within the Table
+ 
 USE sql_hr;
 
-SELECT *
+SELECT 
+	e.employee_id,
+    e.first_name,
+    m.first_name AS manager
+FROM employees e
+LEFT JOIN employees m
+	ON e.reports_to = m.employee_id;
 
+
+-- USING Clause
+
+USE sql_store;
+
+SELECT 
+	o.order_id,
+    c.first_name,
+    sh.name AS shipper
+FROM orders o
+JOIN customers c
+	USING (customer_id)
+LEFT JOIN shippers sh
+	USING (shipper_id);
