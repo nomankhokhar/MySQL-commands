@@ -223,5 +223,44 @@ JOIN order_item_notes oin
     
 -- Exercise Show date client amount name from sql_inventory
 
+USE sql_invoicing;
 
+SELECT 
+	p.date,
+    c.name AS client,
+    p.amount,
+    pm.name AS payment_method
+FROM payments p
+JOIN clients c USING (client_id)
+JOIN payment_methods pm
+	ON p.payment_method = pm.payment_method_id;
+    
+
+-- Natural Joins joind the same columns with different table
+-- This is dangerious as well we can not control over it.
  
+USE sql_store;
+
+SELECT 
+	o.order_id,
+    c.first_name
+FROM orders o
+NATURAL JOIN customers c;
+
+
+--  CRROS JOIN is to select every record from two tables
+--  Both of the Query are the Same that produce same results
+ 
+SELECT *
+FROM customers c
+CROSS JOIN products p
+ORDER BY c.first_name; 
+
+SELECT *
+FROM customers c, orders o
+ORDER BY c.first_name;
+
+
+-- Cross JOIN bt shippers and products
+-- one is implicit then explicit
+  
