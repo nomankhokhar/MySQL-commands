@@ -125,3 +125,45 @@ SET
 	payment_total = invoice_total * 0.5,
     payment_date = due_date
 WHERE invoice_id = 3;
+
+
+-- Updating the Multiple Rows.
+
+UPDATE invoices
+SET 
+	payment_total = invoice_total * 0.5,
+    payment_date = due_date
+WHERE invoice_id in (3, 4);
+
+
+-- Exercise Give any customer born before 1990
+--  50 Extra Points 
+
+USE sql_store;
+
+UPDATE customers
+SET points = points + 50
+WHERE birth_date < '1990-01-01';
+
+-- Update Data using SubQueries
+-- Both of the Queries is Same
+
+UPDATE invoices
+SET 
+	payment_total = invoice_total * 0.5,
+    payment_date = due_date
+WHERE client_id =
+				(SELECT client_id
+				FROM clients
+				WHERE name = 'Myworks');
+
+
+
+UPDATE invoices
+SET 
+	payment_total = invoice_total * 0.5,
+    payment_date = due_date
+WHERE client_id =
+				(SELECT client_id
+				FROM clients
+				WHERE state IN ('CA', 'NY'));
