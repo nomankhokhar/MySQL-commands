@@ -146,8 +146,8 @@ SET points = points + 50
 WHERE birth_date < '1990-01-01';
 
 -- Update Data using SubQueries
--- Both of the Queries is Same
 
+-- Both of the Queries is Same
 UPDATE invoices
 SET 
 	payment_total = invoice_total * 0.5,
@@ -158,7 +158,6 @@ WHERE client_id =
 				WHERE name = 'Myworks');
 
 
-
 UPDATE invoices
 SET 
 	payment_total = invoice_total * 0.5,
@@ -167,3 +166,21 @@ WHERE client_id =
 				(SELECT client_id
 				FROM clients
 				WHERE state IN ('CA', 'NY'));
+                
+
+-- Deleting Rows in the Table
+
+DELETE FROM invoices
+WHERE invoice_id = 1;
+
+-- We can use subqueries as well to del the data
+
+DELETE FROM invoices
+WHERE invoice_id = 
+				(SELECT *
+                FROM clients
+                WHERE name = 'Myworks');
+
+
+-- Restoring the Databases
+-- Follow the First Lecture 
