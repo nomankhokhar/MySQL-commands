@@ -108,3 +108,20 @@ FROM invoices i
 JOIN clients c
 	USING (client_id)
 WHERE payment_date IS NOT NULL;
+
+
+-- Updating a Single Row in the Data 
+
+UPDATE invoices
+SET payment_total = 0, 
+	payment_date = NULL
+WHERE invoice_id = 1;
+
+
+-- Updating the column with column name as well likr due_date 
+
+UPDATE invoices
+SET 
+	payment_total = invoice_total * 0.5,
+    payment_date = due_date
+WHERE invoice_id = 3;
