@@ -201,7 +201,8 @@ LEFT JOIN employees m
 
 
 -- USING Clause
-
+-- USING keyword is best for the columns that multiple have same columns
+ 
 USE sql_store;
 
 SELECT 
@@ -213,3 +214,14 @@ JOIN customers c
 	USING (customer_id)
 LEFT JOIN shippers sh
 	USING (shipper_id);
+    
+-- When have diff column Name     
+SELECT *
+FROM order_items oi
+JOIN order_item_notes oin
+	USING (order_id, product_id);
+    
+-- Exercise Show date client amount name from sql_inventory
+
+
+ 
