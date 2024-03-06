@@ -190,4 +190,5 @@ JOIN order_statuses os
 
 USE sql_hr;
 
+SELECT *
 
