@@ -263,4 +263,53 @@ ORDER BY c.first_name;
 
 -- Cross JOIN bt shippers and products
 -- one is implicit then explicit
-  
+
+-- Implicit
+SELECT 
+	sh.name AS shipper,
+    p.name AS product
+FROM shippers sh, products p
+ORDER BY sh.name;
+
+-- Explicit
+SELECT 
+	sh.name AS shipper,
+    p.name AS product
+FROM shippers sh
+CROSS JOIN products p
+ORDER BY sh.name; 
+
+
+--  UNIONs Rows from Multiple Results
+-- Like Below 
+
+SELECT 
+	order_id,
+    order_date,
+    'Active' AS status
+FROM orders
+WHERE order_date >= '2019-01-01';
+
+
+
+SELECT 
+	order_id,
+    order_date,
+    'Archived' AS status
+FROM orders
+WHERE order_date < '2019-01-01';
+
+-- Combine Both of them Using UNION KeyWords 
+SELECT 
+	order_id,
+    order_date,
+    'Active' AS status
+FROM orders
+WHERE order_date >= '2019-01-01'
+UNION
+SELECT 
+	order_id,
+    order_date,
+    'Archived' AS status
+FROM orders
+WHERE order_date < '2019-01-01'
