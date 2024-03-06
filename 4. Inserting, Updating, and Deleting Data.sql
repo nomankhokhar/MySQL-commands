@@ -66,3 +66,10 @@ VALUES (11, "Strawbery", 100, 10),
 -- Inserting Hirarchical Rows in the table mean 
 -- inserting data into Multiple Tables
  
+INSERT INTO orders (customer_id , order_date , status)
+VALUES (1 , '2002-02-16',1);
+
+INSERT INTO order_items
+VALUES 
+	(LAST_INSERT_ID(), 1, 1, 2.95),
+    (LAST_INSERT_ID(), 2, 1, 2.95);
