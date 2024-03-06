@@ -73,3 +73,38 @@ INSERT INTO order_items
 VALUES 
 	(LAST_INSERT_ID(), 1, 1, 2.95),
     (LAST_INSERT_ID(), 2, 1, 2.95);
+    
+-- Creating a copy of a tables
+-- When you copy the table then SQL remove
+-- all primary key and not null validation
+-- and default values as well 
+
+CREATE TABLE orders_archived AS
+SELECT * 
+FROM orders;
+
+-- Copy specific Data from the table after creating
+INSERT INTO orders_archived
+SELECT *
+FROM orders
+WHERE order_date < '2019-01-01';
+
+
+-- Exercise Save Archived Invoice to another table 
+
+USE sql_invoicing;
+
+CREATE TABLE invoices_archived AS
+SELECT 
+	i.invoice_id,
+    i.number,
+    c.name AS client,
+    i.invoice_total,
+    i.payment_total,
+    i.invoice_date,
+    i.payment_date,
+    i.due_date
+FROM invoices i
+JOIN clients c
+	USING (client_id)
+WHERE payment_date IS NOT NULL;
