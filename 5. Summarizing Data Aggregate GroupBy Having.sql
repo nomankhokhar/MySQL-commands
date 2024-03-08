@@ -108,4 +108,23 @@ WHERE state = 'VA'
 GROUP BY c.customer_id, c.first_name, c.last_name
 HAVING total_sales > 100;
 
--- 
+
+-- ROLLUP Operator
+-- This operator works only Agregator Functions
+
+USE sql_invoicing;
+
+SELECT 
+	client_id,
+    SUM(invoice_total) AS total_sales
+FROM invoices
+GROUP BY client_id WITH ROLLUP;
+
+
+SELECT 
+	state,
+    city,
+    SUM(invoice_total) AS total_sales
+FROM invoices
+JOIN clients c USING (client_id)
+GROUP BY state, city WITH ROLLUP;
