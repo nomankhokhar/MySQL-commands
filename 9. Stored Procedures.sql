@@ -214,3 +214,100 @@ DELIMITER ;
 
 
 CALL make_payment(2, -100 , '2019-01-01')
+
+
+-- Output Parameters
+
+DROP PROCEDURE get_unpaid_invoices_for_client
+
+
+DELIMITER $$
+CREATE PROCEDURE get_unpaid_invoices_for_client
+(
+	client_id INT,
+    OUT invoices_count INT,
+    OUT invoices_total DECIMAL(9, 2)
+)
+BEGIN 
+	SELECT COUNT(*), SUM(invoice_total)
+    INTO invoices_count, invoice_total
+    FROM invoices i
+    WHERE i.client_id = client_id
+		AND payment_total = 0;
+END $$
+
+DELIMITER ;
+
+
+-- OutPut Parameter 
+
+SET @invoices_count = 0;
+SET @invoices_total = 0;
+CALL get_unpaid_invoices_for_client(3);
+SELECT @invoices_count, @invoices_total;
+
+
+
+-- Variable in Store Procedure Local Variable is usefull for Store Procedure
+
+DELIMITER $$
+CREATE PROCEDURE get_risk_factor()
+BEGIN 
+	DECLARE risk_factor DECIMAL(9, 2) DEFAULT 0;
+    DECLARE invoices_total DECIMAL(9, 2);
+    DECLARE invoices_count INT;
+    
+    SELECT COUNT(*), SUM(invoice_total)
+    INTO invoices_count, invoices_total
+    FROM invoices;
+    
+    SET risk_factor = invoices_total / invoices_count * 5;
+    
+    SELECT risk_factor;
+END $$
+
+DELIMITER ;
+
+
+DROP PROCEDURE get_risk_factor;
+
+
+CALL get_risk_factor();
+
+
+
+--  Functions in MySQL
+
+DROP FUNCTION get_risk_factor_for_client;
+
+DELIMITER $$
+CREATE FUNCTION get_risk_factor_for_client
+(
+	client_id INT
+)
+RETURNS INTEGER
+READS SQL DATA
+BEGIN
+	DECLARE risk_factor DECIMAL(9, 2) DEFAULT 0;
+	DECLARE invoices_total DECIMAL(9, 2);
+	DECLARE invoices_count INT;
+		
+	SELECT COUNT(*), SUM(invoice_total)
+	INTO invoices_count, invoices_total
+	FROM invoices i
+    WHERE i.client_id = client_id;
+		
+	SET risk_factor = invoices_total / invoices_count * 5;
+		
+	RETURN IFNULL(risk_factor, 0);
+END $$
+
+DELIMITER ;
+
+
+
+SELECT 
+	client_id,
+    name,
+    get_risk_factor_for_client(client_id) as risk_factor
+FROM clients;
