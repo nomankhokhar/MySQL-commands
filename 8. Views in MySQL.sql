@@ -54,4 +54,23 @@ GROUP BY client_id;
 
 
 SELECT * 
-FROM client_balance
+FROM client_balance;
+
+
+-- Altering and Dripping Views
+
+DROP VIEW client_balance;
+
+
+CREATE OR REPLACE VIEW client_balance AS
+SELECT 
+	c.client_id,
+    c.name,
+    SUM(invoice_total - payment_total) AS balance
+FROM clients c
+JOIN invoices i USING (client_id)
+GROUP BY client_id;
+
+
+
+-- Updatable Views
