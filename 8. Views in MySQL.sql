@@ -74,3 +74,51 @@ GROUP BY client_id;
 
 
 -- Updatable Views
+
+-- DISTINCT , Aggregate functions, GROUP BY, HAVING, UNION 
+-- If the above function are not in VIEWS then Views are Updatable Views
+
+USE sql_invoicing;
+
+DROP VIEW invoices_with_balance;
+
+CREATE OR REPLACE VIEW invoices_with_balance AS
+SELECT 
+	invoice_id,
+    number,
+    client_id,
+    invoice_total,
+    payment_total,
+    invoice_total - payment_total AS balance,
+    invoice_date,
+    due_date,
+    payment_date
+FROM invoices
+WHERE (invoice_total - payment_total) > 0
+WITH CHECK OPTION;
+
+
+DELETE FROM invoices_with_balance
+WHERE invoice_id = 1;
+
+
+SELECT * from invoices_with_balance;
+
+UPDATE invoices_with_balance
+SET due_date = DATE_ADD(due_date, INTERVAL 2 DAY)
+WHERE invoice_id = 2;
+
+-- WITH OPTION CHECK Clause
+
+
+UPDATE invoices_with_balance
+SET payment_total = invoice_total
+WHERE invoice_id = 2
+
+
+-- Others Benefits of Views
+
+-- 1 Abstraction of Database
+-- 2 Simplify Queries
+-- 3 Reduce the impact of changes
+-- 4 Restrict access to the data
