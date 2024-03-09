@@ -98,3 +98,45 @@ CALL get_invoices_by_client(1);
 
 -- Parameters with Defaault Values
 
+
+DROP PROCEDURE get_clients_by_state;
+
+DELIMITER $$
+CREATE PROCEDURE get_clients_by_state
+(
+	state CHAR(2)
+)
+BEGIN
+	IF state IS NULL THEN
+		SET state = 'CA';
+    END IF;
+    
+    SELECT * FROM clients c
+    WHERE c.state = state;
+END $$
+DELIMITER ;
+
+
+CALL get_clients_by_state(NULL);
+
+
+-- Store Procedure IF state is NULL with Default Parameters
+
+DELIMITER $$
+CREATE PROCEDURE get_clients_by_state
+(
+	state CHAR(2)
+)
+BEGIN
+	IF state IS NULL THEN
+		SELECT * FROM clients;
+    ELSE
+		SELECT * FROM clients c
+		WHERE c.state = state;
+    END IF;
+END $$
+DELIMITER ;
+
+
+CALL get_clients_by_state(null);
+CALL get_clients_by_state('CA');
