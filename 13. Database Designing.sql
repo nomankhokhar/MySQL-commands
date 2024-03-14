@@ -9,3 +9,6 @@
 
 
 -- Conceptual Models in MySQL
+
+-- ERD and UML these use in Conceptual Models
+-- MicroSoft Visio, draw.io, LucidCharts
