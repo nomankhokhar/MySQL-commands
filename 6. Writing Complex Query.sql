@@ -75,3 +75,32 @@ FROM customers c
 JOIN orders o USING (customer_id)
 JOIN order_items oi USING (order_id)
 WHERE oi.product_id = 3;
+
+
+-- ALL keyword in MySQL
+
+-- Select invoices larger than all invoices of
+-- client 3
+
+USE sql_invoicing;
+
+-- This is not done by ALL keyword
+
+SELECT *
+FROM invoices
+WHERE invoice_total > (
+	SELECT MAX(invoice_total)
+    FROM invoices
+    WHERE client_id = 3
+);
+
+-- This is done by ALL Keyword
+-- SubQuery return multiple result that is why ALL keyword check multiple data
+
+SELECT *
+FROM invoices
+WHERE invoice_total > ALL (
+	SELECT invoice_total
+    FROM invoices
+    WHERE client_id = 3
+)
