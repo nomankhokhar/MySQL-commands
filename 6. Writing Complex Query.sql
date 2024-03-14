@@ -197,4 +197,5 @@ WHERE NOT EXISTS (
 
 
 -- SubQueries in Select statement
-
+-- SubQueries in From Clause 
+-- Learn both youself
