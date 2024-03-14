@@ -103,4 +103,98 @@ WHERE invoice_total > ALL (
 	SELECT invoice_total
     FROM invoices
     WHERE client_id = 3
-)
+);
+
+
+-- ANY keyword in MySQL
+-- Select client with at least two invoices
+
+-- One way  
+SELECT * 
+FROM clients
+WHERE client_id IN (
+	SELECT client_id
+	FROM invoices
+	GROUP BY client_id
+	HAVING COUNT(*) >= 2
+);
+
+
+-- Another way
+SELECT * 
+FROM clients
+WHERE client_id = ANY (
+	SELECT client_id
+	FROM invoices
+	GROUP BY client_id
+	HAVING COUNT(*) >= 2
+);
+
+
+
+-- Correlated Subqueries
+
+-- Select emplyess whose salary is
+-- above averge in their office
+
+USE sql_hr;
+
+-- The Query that have correlated with outer query 
+-- is Correlated Query
+-- This slow due to lot of data
+
+SELECT *
+FROM employees e
+WHERE salary > (
+	SELECT AVG(salary)
+    FROM employees
+    WHERE office_id = e.office_id
+);
+
+
+-- Get Invoices that are larger than the
+-- client's average invoice amount
+
+USE sql_invoicing;
+
+SELECT *
+FROM invoices i
+WHERE invoice_total > (
+	SELECT AVG(invoice_total)
+    FROM invoices
+    WHERE client_id = i.client_id
+);
+
+
+
+-- The EXISTS Operator in MySQL
+
+-- Select Clients that have an invoice
+
+-- Exits operator is Fast whenever record is matched than show the result
+
+SELECT *
+FROM clients c
+WHERE EXISTS (
+	SELECT client_id
+    FROM invoices
+    WHERE client_id = c.client_id
+);
+
+
+-- Exercise Find the products that have never been never
+-- orderd
+USE sql_store;
+
+SELECT *
+FROM products p
+WHERE NOT EXISTS (
+	SELECT product_id
+    FROM order_items
+    WHERE product_id = p.product_id
+);
+
+
+
+-- SubQueries in Select statement
+
