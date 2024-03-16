@@ -13,3 +13,12 @@
 -- ERD and UML these use in Conceptual Models
 -- MicroSoft Visio, draw.io, LucidCharts
 
+-- Student and Course Database Implementation.
+
+
+-- Normalizaiton 
+
+
+-- 1NF mean Each cell should have a single value 
+-- and we cannot have repeated columns values like tags in courses table
+
