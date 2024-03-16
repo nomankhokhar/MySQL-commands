@@ -1,0 +1,49 @@
+<mxfile host="app.diagrams.net" modified="2024-03-16T14:12:31.523Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36" etag="x8jLd8TI6wxddBsPA6xI" version="24.0.7" type="device">
+  <diagram name="Page-1" id="peBtfeKRPGwf2uGWrvXT">
+    <mxGraphModel dx="1520" dy="494" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="eQIvyi-jMVv160Tha08m-7" value="Student" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;arcSize=4;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-281" y="32" width="160" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="eQIvyi-jMVv160Tha08m-8" value="firstName (string)&lt;div&gt;lastName (string)&lt;/div&gt;&lt;div&gt;email (string)&lt;/div&gt;&lt;div&gt;dateRegistered (dateTime)&lt;br&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;/div&gt;" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;html=1;" vertex="1" parent="eQIvyi-jMVv160Tha08m-7">
+          <mxGeometry y="50" width="160" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="eQIvyi-jMVv160Tha08m-9" value="Course" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;arcSize=4;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="239" y="45" width="160" height="120" as="geometry">
+            <mxRectangle x="239" y="45" width="80" height="50" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eQIvyi-jMVv160Tha08m-10" value="&lt;div&gt;title (string)&lt;/div&gt;&lt;div&gt;price (float)&lt;/div&gt;&lt;div&gt;instrutor (string)&lt;/div&gt;&lt;div&gt;tags&lt;/div&gt;" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;html=1;" vertex="1" parent="eQIvyi-jMVv160Tha08m-9">
+          <mxGeometry y="50" width="160" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="eQIvyi-jMVv160Tha08m-11" value="Enrollment" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;arcSize=4;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-16" y="42" width="160" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="eQIvyi-jMVv160Tha08m-12" value="date (dateTime)&lt;div&gt;price (float)&lt;/div&gt;" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;html=1;" vertex="1" parent="eQIvyi-jMVv160Tha08m-11">
+          <mxGeometry y="50" width="160" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="eQIvyi-jMVv160Tha08m-13" value="" style="edgeStyle=entityRelationEdgeStyle;fontSize=12;html=1;endArrow=ERzeroToMany;endFill=1;rounded=0;startSize=8;endSize=8;curved=1;entryX=-0.006;entryY=0.425;entryDx=0;entryDy=0;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryPerimeter=0;" edge="1" parent="1" source="eQIvyi-jMVv160Tha08m-8" target="eQIvyi-jMVv160Tha08m-11">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="-137" y="149" as="sourcePoint" />
+            <mxPoint x="-47" y="244.5" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="-81" y="284.5" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eQIvyi-jMVv160Tha08m-14" value="" style="edgeStyle=entityRelationEdgeStyle;fontSize=12;html=1;endArrow=ERzeroToMany;endFill=1;rounded=0;startSize=8;endSize=8;curved=1;entryX=1;entryY=0;entryDx=0;entryDy=0;exitX=0;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="eQIvyi-jMVv160Tha08m-10" target="eQIvyi-jMVv160Tha08m-12">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="93" y="32" as="sourcePoint" />
+            <mxPoint x="182" y="178" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="133" y="216.5" />
+              <mxPoint x="152" y="85" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
