@@ -3,7 +3,7 @@
   -- v
 
 -- Understand the requirements
--- Build a Conceptual Model
+-- Build a Conceptual Model do not have -> 1-M, M-1, 1-1,M-M relational Table
 -- Build a Logical Model
 -- Build a Physical Model
 
