@@ -22,3 +22,10 @@
 -- 1NF mean Each cell should have a single value 
 -- and we cannot have repeated columns values like tags in courses table
 
+
+-- 2NF mean Every table should describe one entity and every column in
+-- that table should describe that entity | Not repeated values in different table 
+-- one value at one table
+
+
+-- 
