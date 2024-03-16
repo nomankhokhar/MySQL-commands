@@ -28,8 +28,6 @@
 -- one value at one table
 
 
-
-
 -- A column in a table should not be derived from other columns
 -- 3NF -> invoice , payment_total, balance 
 -- Balance is calculated by invoice and payment_total 
