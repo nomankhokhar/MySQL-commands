@@ -140,6 +140,6 @@ CHARACTER SET latin1;
 -- Storage Engine
 -- Latest Methods to Run Query by Oracle DB Compnay 
 -- Old Database use MyISAM Alter that table into InnoDB
-
+-- It will be taking time to Change Storage Engine in Production it will be disaster
 ALTER TABLE customers
 ENGINE = InnoDB;
