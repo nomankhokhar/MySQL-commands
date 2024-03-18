@@ -35,3 +35,9 @@
 -- inconsist data
 
 
+
+-- When you do not have Database then You have to do Forward Engineering Options
+-- When you modify any column then use Synchonizing Model from Top Database Options
+
+
+-- Logical Model of Flight Booking System
