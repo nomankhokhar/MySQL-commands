@@ -67,7 +67,7 @@ DROP TABLE IF EXISTS customers;
 CREATE TABLE IF NOT EXISTS customers
 (
 	customer_id INT PRIMARY KEY AUTO_INCREMENT,
-    first_name  VARCHAR(50) NOT NULL,
+    first_name  VARCHAR(50) CHARACTER SET latin1 NOT NULL, -- we use this line CHARACTER SET latin1 to reduce the size of the columns
     points      INT NOT NULL DEFAULT 0,
     email 		VARCHAR(255) NOT NULL UNIQUE
 );
@@ -118,4 +118,20 @@ ALTER TABLE orders
 
 
 -- Character Sets and Collations
+-- Use international Collation for other people as well 
 
+SHOW CHARSET;
+
+
+-- To set the SETS and COLLATIONS at DB Levels
+
+-- If existing db use ALTER agaisnt CREATE
+CREATE DATABASE db_name
+	CHARACTER SET latin1;
+    
+    
+-- Table level
+
+-- If existing table use ALTER agaisnt CREATE
+CREATE TABLE table1
+CHARACTER SET latin1;
