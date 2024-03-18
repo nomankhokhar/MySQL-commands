@@ -33,3 +33,5 @@
 -- Balance is calculated by invoice and payment_total 
 -- we do not need to add this columns in the table for 
 -- inconsist data
+
+
