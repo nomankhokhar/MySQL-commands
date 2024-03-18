@@ -41,3 +41,4 @@
 
 
 -- Logical Model of Flight Booking System
+-- Logical Model of Rent Video Booking System
