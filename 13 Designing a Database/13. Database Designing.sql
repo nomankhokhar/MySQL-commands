@@ -58,6 +58,11 @@ DROP DATABASE IF EXISTS sql_store2;
 
 USE sql_store2;
 
+
+-- Customer depend on order that is why we drop first Orders Tables
+-- Then Is it Easy to Drop Customers tables
+
+DROP TABLE IF EXISTS orders;
 DROP TABLE IF EXISTS customers;
 CREATE TABLE IF NOT EXISTS customers
 (
@@ -82,3 +87,35 @@ ALTER TABLE customers
     
     
 describe customers;
+
+
+-- Creating Relationships in MySQL
+
+CREATE TABLE orders
+(
+	order_id INT PRIMARY KEY,
+    customer_id INT NOT NULL,
+    FOREIGN KEY fk_orders_customers (customer_id)
+		REFERENCES customers (customer_id)
+        ON UPDATE CASCADE -- Update Other table AS well
+        ON DELETE NO ACTION -- No Losing the Data
+);
+
+DESCRIBE orders;
+
+-- Altering Primary and Foreign Key Constraints
+
+ALTER TABLE orders
+	ADD PRIMARY KEY (order_id),
+    DROP PRIMARY KEY, -- Droping the Primary key Do not specify the columns
+    DROP FOREIGN KEY fk_orders_customers,
+    ADD FOREIGN KEY fk_orders_customers (customer_id)
+		REFERENCES customers (customer_id)
+        ON UPDATE CASCADE
+        ON DELETE NO ACTION
+;
+
+
+
+-- Character Sets and Collations
+
