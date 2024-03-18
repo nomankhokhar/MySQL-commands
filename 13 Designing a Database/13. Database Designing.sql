@@ -135,3 +135,11 @@ CREATE DATABASE db_name
 -- If existing table use ALTER agaisnt CREATE
 CREATE TABLE table1
 CHARACTER SET latin1;
+
+
+-- Storage Engine
+-- Latest Methods to Run Query by Oracle DB Compnay 
+-- Old Database use MyISAM Alter that table into InnoDB
+
+ALTER TABLE customers
+ENGINE = InnoDB;
