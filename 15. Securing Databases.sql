@@ -24,7 +24,7 @@ DROP USER Noman;
 SET PASSWORD FOR Noman = '1234';
 
 -- For Root user
-SET PASSWORD = '1234'
+SET PASSWORD = '1234';
 
 
 -- Granting the Privilages in MySQL
@@ -32,3 +32,25 @@ SET PASSWORD = '1234'
 -- web/destop
 -- admin
 
+CREATE USER noman_app IDENTIFIED BY '12345';
+
+-- sql_store.* ->  whole database
+-- sql_store.customer -> only customer table
+GRANT SELECT, INSERT, UPDATE, DELETE, EXECUTE
+ON sql_store.*
+TO noman_app;
+
+
+-- Admin Level give all permission
+GRANT ALL
+ON *.*
+TO noman_app;
+
+
+-- Viewing Privillages in MySQL
+
+SHOW GRANTS FOR noman_app;
+
+-- root levels
+
+SHOW GRANTS;
