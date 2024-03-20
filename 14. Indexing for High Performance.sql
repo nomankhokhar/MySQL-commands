@@ -85,12 +85,80 @@ FROM posts
 WHERE title LIKE '%react redux%' OR
 		body LIKE '%react redux%';
         
-        
+
 CREATE FULLTEXT INDEX idx_title_body ON
 posts (title, body);
-        
-	
+
+
 SELECT *
 FROM posts
 WHERE MATCH(title, body) AGAINST('react redux');
-        
+
+
+-- BOOLEAN MODE IN MySQL
+
+
+-- +form check title as well as in body must include
+-- -redux not necessary 
+
+SELECT *
+FROM posts
+WHERE MATCH(title, body) AGAINST('react -redux +form' IN BOOLEAN MODE);
+
+
+-- Extact Phrase in title or body
+ 
+SELECT *
+FROM posts
+WHERE MATCH(title, body) AGAINST('"handling a form"' IN BOOLEAN MODE);
+
+
+-- Composite Index in MySQL
+-- It is Good If we do condition on Multiple condition
+-- like below one
+
+USE sql_store;
+
+CREATE INDEX idx_state_points ON
+customers(state, points); 
+
+
+SHOW INDEXES IN customers;
+
+
+EXPLAIN SELECT customer_id 
+FROM customers
+WHERE state = 'CA' AND points > 1000;
+
+
+DROP INDEX idx_points ON
+customers;
+
+
+-- Orders of Columns in Composite indexes MySQL
+
+-- Put the most frequently used columns first
+-- Put the columns with higher cardinality first -> Mean Unique Values
+
+SELECT customer_id
+FROM customers
+WHERE state = 'CA' AND last_name LIKE 'A%';
+
+
+-- Checking Unique Value (9 , 10) is ans
+SELECT COUNT(DISTINCT state),
+	   COUNT(DISTINCT last_name)
+FROM customers;
+
+CREATE INDEX idx_lastname_state ON customers
+(last_name , state);
+
+
+CREATE INDEX idx_state_lastname ON customers
+(state ,last_name);
+
+-- Below Query use Above Index for Better Performance
+
+EXPLAIN SELECT customer_id
+FROM customers
+WHERE state = 'NY' OR last_name LIKE 'A%';
