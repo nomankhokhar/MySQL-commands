@@ -54,3 +54,11 @@ SHOW GRANTS FOR noman_app;
 -- root levels
 
 SHOW GRANTS;
+
+
+-- Revoking Privilages in MySQL;
+-- Give Access to the noman_app user he can create views on that table
+
+REVOKE CREATE VIEW
+ON sql_store.*
+FROM noman_app;
