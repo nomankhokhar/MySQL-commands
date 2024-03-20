@@ -57,3 +57,40 @@ WHERE points > 100;
 -- MySQL byDefault index Primary key
 
 SHOW INDEXES IN customers;
+
+ANALYZE TABLE customers;
+
+SHOW INDEXES IN orders;
+
+
+-- Indexing String Columns in MySQL
+
+-- String Columns -> char, varchar, text, blob
+ 
+DROP INDEX ids_lastname ON customers;
+ 
+CREATE INDEX idx_lastname ON customers (last_name(5));
+
+
+
+-- Full Text Indexes
+
+USE sql_blog;
+
+
+-- As Table Grow its takes times to search the data
+-- We use Index for this Search
+SELECT *
+FROM posts
+WHERE title LIKE '%react redux%' OR
+		body LIKE '%react redux%';
+        
+        
+CREATE FULLTEXT INDEX idx_title_body ON
+posts (title, body);
+        
+	
+SELECT *
+FROM posts
+WHERE MATCH(title, body) AGAINST('react redux');
+        
