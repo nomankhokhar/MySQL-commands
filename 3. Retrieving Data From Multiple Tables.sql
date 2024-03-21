@@ -8,7 +8,9 @@ JOIN customers
 	ON orders.customer_id = customers.customer_id;
     
     
-    
+-- customer_id is avail on both table that is why we specify which table
+
+
 SELECT order_id , orders.customer_id ,first_name , last_name
 FROM orders
 JOIN customers
