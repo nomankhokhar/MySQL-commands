@@ -24,6 +24,7 @@ SELECT 	last_name ,
         points * 10 + 100 AS 'discount factor'
 FROM customers;
 
+-- this will show Unique State from the table
 
 SELECT DISTINCT state 
 FROM customers;
@@ -50,6 +51,8 @@ FROM Customers
 WHERE state <> 'va';
 
 
+-- Orignal Dates are Stored in DB like below condition
+
 
 SELECT *
 FROM Customers
@@ -57,6 +60,7 @@ WHERE birth_date > '1990-01-01';
 
 
 -- Get the orders placed this year
+
 
 SELECT *
 FROM orders
