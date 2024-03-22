@@ -276,6 +276,13 @@ CALL get_risk_factor();
 
 
 
+-- In essence, stored procedures are more versatile and can 
+-- perform a wide range of tasks beyond simple value computation, 
+-- while functions are specialized for computing values based on 
+-- input parameters.
+
+
+
 --  Functions in MySQL
 
 DROP FUNCTION get_risk_factor_for_client;

@@ -42,6 +42,7 @@ TO noman_app;
 
 
 -- Admin Level give all permission
+
 GRANT ALL
 ON *.*
 TO noman_app;

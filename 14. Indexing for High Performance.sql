@@ -80,6 +80,7 @@ USE sql_blog;
 
 -- As Table Grow its takes times to search the data
 -- We use Index for this Search
+
 SELECT *
 FROM posts
 WHERE title LIKE '%react redux%' OR

@@ -118,7 +118,7 @@ SET payment_total = 0,
 WHERE invoice_id = 1;
 
 
--- Updating the column with column name as well likr due_date 
+-- Updating the column with column name as well like due_date 
 
 UPDATE invoices
 SET 
@@ -148,6 +148,7 @@ WHERE birth_date < '1990-01-01';
 -- Update Data using SubQueries
 
 -- Both of the Queries is Same
+
 UPDATE invoices
 SET 
 	payment_total = invoice_total * 0.5,

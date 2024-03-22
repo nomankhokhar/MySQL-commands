@@ -88,7 +88,7 @@ VALUES (DEFAULT, 5 ,3 , '2019-01-01', 10 , 1);
 
 
 
--- Events in MuSQL
+-- Events in MySQL
 
 SHOW VARIABLES;
 

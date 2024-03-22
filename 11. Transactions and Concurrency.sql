@@ -7,11 +7,11 @@ USE sql_store;
 
 START TRANSACTION;
 
-INSERT INTO orders (customer_id, order_date, status)
-VALUES (1, '2019-01-01', 1);
+    INSERT INTO orders (customer_id, order_date, status)
+    VALUES (1, '2019-01-01', 1);
 
-INSERT INTO order_otems
-VALUES (LAST_INSERT_ID, 1, 1, 1);
+    INSERT INTO order_otems
+    VALUES (LAST_INSERT_ID, 1, 1, 1);
 
 COMMIT ;
 
@@ -25,7 +25,8 @@ SELECT *
 FROM sql_store.order_items;
 
 
--- Whenever we execute any statement like select, update, delete and more command
+-- Whenever we execute any statement like select, update, delete 
+-- and more command
 -- MySQL commit it as a Transactions and return it.
 
  
@@ -40,9 +41,9 @@ SELECT *
 FROM sql_store.customers;
 
 START TRANSACTION;
-UPDATE customers
-SET points = points + 10
-WHERE customer_id = 1;
+    UPDATE customers
+    SET points = points + 10
+    WHERE customer_id = 1;
 COMMIT;
 
 
@@ -121,6 +122,7 @@ COMMIT;
 
 
 -- This is Second Use Code that USE TRANSACTION
+
 USE sql_store;
 START TRANSACTION;
 UPDATE customers
@@ -128,10 +130,10 @@ SET state = 'VA'
 WHERE customer_id = 3;
 COMMIT;  
  
- 
- 
+  
 -- DeadLock in MySQL 
 -- When Two user Access and Modify the same table then we face deadlock Situation
+
 USE sql_store;
 START TRANSACTION;
 UPDATE customers SET state = 'VA' WHERE customer_id = 1;

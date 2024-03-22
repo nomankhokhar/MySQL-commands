@@ -3,6 +3,10 @@
 -- SubQueries return only one Result 
 -- Find product that are more expensive than lettuce (id = 3)
 
+
+
+-- we use subQuery when one Query data is consist of another Query data
+
 USE sql_store;
 
 SELECT *
@@ -184,6 +188,7 @@ WHERE EXISTS (
 
 -- Exercise Find the products that have never been never
 -- orderd
+
 USE sql_store;
 
 SELECT *
