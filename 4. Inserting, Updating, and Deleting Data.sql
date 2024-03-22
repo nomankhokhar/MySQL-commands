@@ -12,7 +12,7 @@
 
 INSERT INTO customers
 VALUES (
-	DEFAULT,
+	DEFAULT, -- customer_id because this is primary key
     'Noman',
     'Ali',
     '2002-02-16',
